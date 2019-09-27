@@ -8,12 +8,14 @@ namespace Products
     public string Name { get; set; }
     public decimal Cost { get; set; }
     public string Type { get; set; }
+    public int Count { get; set; }
 
     public Product (string name, decimal cost, string type)
     {
       Name = name; 
       Cost = cost;
       Type = type;
+      Count = 0;
     }
   }
 
@@ -69,9 +71,35 @@ namespace Products
       Console.WriteLine("            SPECIALS:         ");
       Console.WriteLine("            =========         ");
       Console.WriteLine("   Buy 2 loaves, get 1 free!  ");
-      Console.WriteLine("   Buy 3 pastries for $5.00!   ");
+      Console.WriteLine("   Buy 3 pastries for $5.00!  ");
       Console.WriteLine("");
       Console.WriteLine("==============================");
+    }
+    public void AddItem(string name, int quantity)
+    {
+      Product orderItem = null;
+      for (int i = 0; i < BreadItems.Count; i++)
+      {
+        if (BreadItems[i].Name == name)
+        {
+          orderItem = BreadItems[i];
+        }
+      }
+      for (int i = 0; i < BreadItems.Count; i++)
+      {
+        if (BreadItems[i].Name == name)
+        {
+          orderItem = BreadItems[i];
+        }
+      }
+      if (orderItem != null)
+      {
+        orderItem.Count += quantity;
+      } 
+      else
+      {
+        Console.WriteLine("I'm sorry, I couldn't find that item in our shop");
+      }
     }
   }
 }

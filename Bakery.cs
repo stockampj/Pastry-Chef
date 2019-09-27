@@ -11,7 +11,12 @@ namespace Bakery
             BakeryInventory inventory = new BakeryInventory();
             CreateProducts(inventory);
             inventory.MenuList();
-
+            Console.WriteLine("Welcome to our shop. Take a look at the menu and see if there is anything you'd like.")
+            Console.WriteLine("What do want to add to your order?");
+            string item = Console.ReadLine();
+            Console.WriteLine("How many of thoese do you want?");
+            int quantity = Console.ReadLine();
+            
             
         }
 
