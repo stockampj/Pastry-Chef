@@ -4,13 +4,29 @@ using Products;
 
 namespace Bakery 
 {
-    class UserInteraction
+    class Program
     {
         static void Main()
         {
-            // Product bananaBread = new Product("Bannana Bread", (float)(4.52), "bread");
-            Console.WriteLine(bananaBread.Name);
+            BakeryInventory inventory = new BakeryInventory();
+            CreateProducts(inventory);
+            inventory.MenuList();
+
             
+        }
+
+        public static void CreateProducts(BakeryInventory inventory)
+        {
+            Product bananaBread = new Product("Bannana Bread", (decimal)(3.25), "bread");
+            Product ciabatta = new Product("Ciabatta", (decimal)(3.25), "bread");
+            Product doughnut = new Product("Doughnut", (decimal)(1.49), "pastry");
+            Product danish = new Product("Danish", (decimal)(1.49), "pastry");
+
+            List<Product> initialList = new List<Product> {bananaBread, ciabatta, doughnut, danish};
+            foreach (Product product in initialList)
+            { 
+                inventory.AddProduct(product);
+            }
         }
     }
 }
