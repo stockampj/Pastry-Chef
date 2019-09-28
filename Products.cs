@@ -87,9 +87,9 @@ namespace Products
       }
       for (int i = 0; i < BreadItems.Count; i++)
       {
-        if (BreadItems[i].Name == name)
+        if (PastryItems[i].Name == name)
         {
-          orderItem = BreadItems[i];
+          orderItem = PastryItems[i];
         }
       }
       if (orderItem != null)
