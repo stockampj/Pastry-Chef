@@ -81,14 +81,14 @@ namespace Products
       Product orderItem = null;
       for (int i = 0; i < BreadItems.Count; i++)
       {
-        if (BreadItems[i].Name == name)
+        if (BreadItems[i].Name.ToLower() == name.ToLower())
         {
           orderItem = BreadItems[i];
         }
       }
       for (int i = 0; i < PastryItems.Count; i++)
       {
-        if (PastryItems[i].Name == name)
+        if (PastryItems[i].Name.ToLower() == name.ToLower())
         {
           orderItem = PastryItems[i];
         }
@@ -117,12 +117,27 @@ namespace Products
       }
       int breadCountDiscount = breadCount - (breadCount/3);
       double breadPrice = (double)breadCountDiscount*3.49;
+      double breadSavings = breadCount*3.49 - breadPrice;
 
       int pastryDiscounter = pastryCount/3;
       double pastryPrice = (double)(pastryDiscounter*5) + (double)(pastryCount%3)*(1.99);
+      double pastrySavings = pastryCount*1.99 - pastryPrice; 
       
-      double totalPrice = pastryPrice + breadPrice; 
-      Console.WriteLine("Your Total is: $" + totalPrice);
+      double preDiscountPrice = (double)breadCount*3.49 + (double)pastryCount*1.99;
+      double totalPrice = pastryPrice + breadPrice;
+
+      Console.WriteLine("               Subtotal: $" + preDiscountPrice);
+      if (breadSavings != 0)
+      {
+        Console.WriteLine(" Bread Special Savings: -$" + breadSavings);
+      }
+      if (pastrySavings != 0)
+      {
+        Console.WriteLine("Pastry Special Savings: -$" + pastrySavings);
+      }
+      Console.WriteLine("");
+      Console.WriteLine("          Your Total is: $" + totalPrice);
+      Console.WriteLine("");
     }
   }
 }
