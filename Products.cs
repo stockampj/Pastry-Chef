@@ -74,6 +74,7 @@ namespace Products
       Console.WriteLine("   Buy 3 pastries for $5.00!  ");
       Console.WriteLine("");
       Console.WriteLine("==============================");
+      Console.WriteLine("");
     }
     public void AddItem(string name, int quantity)
     {
@@ -85,7 +86,7 @@ namespace Products
           orderItem = BreadItems[i];
         }
       }
-      for (int i = 0; i < BreadItems.Count; i++)
+      for (int i = 0; i < PastryItems.Count; i++)
       {
         if (PastryItems[i].Name == name)
         {
@@ -100,6 +101,28 @@ namespace Products
       {
         Console.WriteLine("I'm sorry, I couldn't find that item in our shop");
       }
+    }
+    public void CalculateCost()
+    {
+      int breadCount = 0;
+      int pastryCount = 0;
+
+      foreach (Product product in BreadItems)
+      {
+        breadCount += product.Count;
+      } 
+      foreach (Product product in PastryItems)
+      {
+        pastryCount += product.Count;
+      }
+      int breadCountDiscount = breadCount - (breadCount/3);
+      double breadPrice = (double)breadCountDiscount*3.49;
+
+      int pastryDiscounter = pastryCount/3;
+      double pastryPrice = (double)(pastryDiscounter*5) + (double)(pastryCount%3)*(1.99);
+      
+      double totalPrice = pastryPrice + breadPrice; 
+      Console.WriteLine("Your Total is: $" + totalPrice);
     }
   }
 }
